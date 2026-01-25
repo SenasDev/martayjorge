@@ -1,0 +1,178 @@
+import React, { useState } from 'react';
+
+// NOTE: This form is prepared to integrate with Google Sheets via Google Forms.
+// 1. Create a Google Form with fields: Name, Guests, Attendance, Restrictions, Notes.
+// 2. Get the "action" URL from the form (view source -> <form action="...">)
+// 3. Get the "entry.XXXXXX" IDs for each input.
+// 4. Replace the placeholders below.
+
+const RsvpSection: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'rsvp' | 'allergens'>('rsvp');
+
+  return (
+    <section id="rsvp" className="py-24 px-4 bg-brand-beige relative overflow-hidden">
+      {/* Background Pattern */}
+      <div 
+        className="absolute inset-0 w-full h-full opacity-5 pointer-events-none" 
+        style={{ backgroundImage: 'radial-gradient(#BFA15F 1px, transparent 1px)', backgroundSize: '30px 30px' }}
+      ></div>
+
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <span className="material-symbols-outlined text-brand-gold text-5xl mb-6">mark_email_unread</span>
+        <h2 className="text-4xl md:text-5xl font-serif text-brand-stone mb-6">¿Nos acompañas?</h2>
+        <p className="text-brand-text text-lg mb-10 max-w-2xl mx-auto">
+          Por favor, confirma tu asistencia para nuestra boda en <strong>Café del Río</strong>.
+          <br/>
+          Si tienes restricciones alimentarias, no olvides rellenar también el formulario de alérgenos.
+        </p>
+
+        {/* Tab Switcher */}
+        <div className="flex justify-center gap-4 mb-12">
+          <button
+            onClick={() => setActiveTab('rsvp')}
+            className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+              activeTab === 'rsvp' 
+                ? 'bg-brand-gold text-white shadow-lg shadow-brand-gold/30' 
+                : 'bg-white border border-brand-gold/20 text-brand-text hover:text-brand-gold hover:border-brand-gold'
+            }`}
+          >
+            Confirmar Asistencia
+          </button>
+          <button
+            onClick={() => setActiveTab('allergens')}
+            className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${
+              activeTab === 'allergens' 
+                ? 'bg-brand-gold text-white shadow-lg shadow-brand-gold/30' 
+                : 'bg-white border border-brand-gold/20 text-brand-text hover:text-brand-gold hover:border-brand-gold'
+            }`}
+          >
+            Alérgenos y Dietas
+          </button>
+        </div>
+
+        {/* Forms Container */}
+        <div className="glass-panel p-8 md:p-12 rounded-2xl border border-brand-gold/10 shadow-2xl max-w-2xl mx-auto text-left">
+          
+          {activeTab === 'rsvp' ? (
+            <form 
+              action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" 
+              method="POST"
+              target="_blank"
+              className="flex flex-col gap-6 animate-fade-in"
+            >
+              <h3 className="text-2xl font-serif text-brand-stone mb-2">Formulario de Asistencia</h3>
+              
+              <div>
+                <label htmlFor="name" className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2">Nombre Completo</label>
+                <input 
+                  type="text" 
+                  name="entry.NAME_ID" 
+                  id="name" 
+                  required
+                  placeholder="Escribe tu nombre y apellidos"
+                  className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all placeholder-gray-400"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="guests" className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2">Número de invitados</label>
+                <select 
+                  id="guests" 
+                  name="entry.GUESTS_ID"
+                  className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all"
+                >
+                  <option value="1">1 Persona</option>
+                  <option value="2">2 Personas</option>
+                  <option value="3">3 Personas (Familia)</option>
+                  <option value="4">4 Personas (Familia)</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <label className="cursor-pointer relative flex items-center gap-4 p-4 rounded-lg border border-brand-gold/20 hover:border-brand-gold bg-white transition-all group">
+                    <input type="radio" name="entry.ATTENDANCE_ID" value="Accept" className="w-5 h-5 text-brand-gold bg-transparent border-gray-400 focus:ring-brand-gold" defaultChecked />
+                    <div>
+                      <span className="block text-brand-stone font-medium">Asistiré con gusto</span>
+                      <span className="text-xs text-brand-text">¡Nos vemos en Madrid!</span>
+                    </div>
+                 </label>
+                 <label className="cursor-pointer relative flex items-center gap-4 p-4 rounded-lg border border-brand-gold/20 hover:border-red-400 bg-white transition-all group">
+                    <input type="radio" name="entry.ATTENDANCE_ID" value="Decline" className="w-5 h-5 text-red-500 bg-transparent border-gray-400 focus:ring-red-500" />
+                    <div>
+                      <span className="block text-brand-stone font-medium">Tristemente no</span>
+                      <span className="text-xs text-brand-text">Os acompañaré en espíritu</span>
+                    </div>
+                 </label>
+              </div>
+
+              <button type="submit" className="w-full bg-brand-gold hover:bg-brand-goldDark text-white font-bold py-4 px-6 rounded-lg transition-all mt-4 shadow-lg hover:shadow-brand-gold/20">
+                Confirmar Asistencia
+              </button>
+            </form>
+          ) : (
+            <form 
+              action="https://docs.google.com/forms/d/e/YOUR_ALLERGEN_FORM_ID/formResponse" 
+              method="POST"
+              target="_blank"
+              className="flex flex-col gap-6 animate-fade-in"
+            >
+              <h3 className="text-2xl font-serif text-brand-stone mb-2">Información de Alérgenos</h3>
+              <p className="text-sm text-brand-text -mt-4">Este formulario está conectado a nuestra base de datos de catering para asegurar tu bienestar.</p>
+              
+              <div>
+                <label htmlFor="allergen-name" className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2">Nombre del invitado</label>
+                <input 
+                  type="text" 
+                  name="entry.NAME_ID" 
+                  id="allergen-name" 
+                  required
+                  placeholder="Nombre de la persona con restricciones"
+                  className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all placeholder-gray-400"
+                />
+              </div>
+
+              <div className="space-y-3">
+                 <label className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2">Selecciona restricciones</label>
+                 <div className="grid grid-cols-2 gap-3">
+                    {['Vegetariano', 'Vegano', 'Sin Gluten', 'Sin Lactosa', 'Sin Frutos Secos', 'Sin Marisco'].map((item) => (
+                      <label key={item} className="flex items-center gap-3 p-3 rounded-md hover:bg-brand-beige transition-colors cursor-pointer bg-white border border-brand-gold/10">
+                        <input type="checkbox" name="entry.RESTRICTIONS_ID" value={item} className="w-5 h-5 rounded border-gray-400 text-brand-gold focus:ring-brand-gold bg-transparent" />
+                        <span className="text-brand-text text-sm font-medium">{item}</span>
+                      </label>
+                    ))}
+                 </div>
+              </div>
+
+              <div>
+                <label htmlFor="notes" className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2">Notas Adicionales</label>
+                <textarea 
+                  id="notes" 
+                  name="entry.NOTES_ID"
+                  rows={3}
+                  placeholder="Detalles específicos..."
+                  className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all placeholder-gray-400 resize-none"
+                ></textarea>
+              </div>
+
+              <button type="submit" className="w-full bg-brand-gold hover:bg-brand-goldDark text-white font-bold py-4 px-6 rounded-lg transition-all mt-4 shadow-lg hover:shadow-brand-gold/20">
+                Enviar Información Alimentaria
+              </button>
+            </form>
+          )}
+
+          {/* Bank Info */}
+          <div className="mt-8 pt-8 border-t border-brand-gold/10 text-center">
+             <p className="text-brand-gold font-bold uppercase text-xs tracking-widest mb-2">Regalo</p>
+             <p className="text-brand-text text-sm max-w-lg mx-auto">
+               Vuestra presencia es nuestro mayor regalo. No obstante, si queréis tener un detalle con nosotros, podéis hacerlo en la cuenta: <br/>
+               <span className="text-brand-stone font-mono mt-2 inline-block bg-brand-beige px-3 py-1 rounded select-all border border-brand-gold/10">ESXX XXXX XXXX XXXX XXXX</span>
+             </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default RsvpSection;
