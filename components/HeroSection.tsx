@@ -39,9 +39,9 @@ END:VCALENDAR`;
   return (
     <header className="relative w-full h-[85vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
       {/* Background */}
-      <div 
+      <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
+        style={{
           backgroundImage: "url('https://image.ungrandjour.com/eyJidWNrZXQiOiJwcm9kdWN0aW9uLXVuZ3JhbmRqb3VyIiwia2V5Ijoic2xjczR6Y2Nqa3o0cXlxa3p5cHpzMm93dzZ4eCIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwMH0sInRvRm9ybWF0IjoianBnIn19')",
         }}
       >
@@ -60,7 +60,7 @@ END:VCALENDAR`;
       {/* Buttons Positioned at Bottom (20px from container) */}
       <div className="absolute bottom-[20px] left-0 w-full z-30 px-4">
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center max-w-4xl mx-auto">
-          <a 
+          <a
             href="#rsvp"
             className="w-full sm:w-auto min-w-[200px] group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-brand-gold px-8 py-4 text-white font-bold tracking-widest transition-all hover:bg-brand-goldDark hover:shadow-[0_0_20px_rgba(214,192,150,0.4)] shadow-lg"
           >
@@ -68,29 +68,29 @@ END:VCALENDAR`;
           </a>
 
           <div className="relative group w-full sm:w-auto">
-            <button 
+            <button
               className="w-full sm:w-auto min-w-[200px] inline-flex items-center justify-center gap-2 rounded-lg border border-white/60 bg-white/20 backdrop-blur-md px-8 py-4 text-white font-bold tracking-widest transition-all hover:bg-white/30 hover:border-white shadow-lg"
             >
               <span className="material-symbols-outlined text-xl">calendar_today</span>
               <span>CALENDARIO</span>
             </button>
-            
+
             {/* Dropdown for Calendar Options (opens upwards) */}
             <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-2 w-full bg-white rounded-lg shadow-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-bottom">
-               <a 
-                 href={googleUrl} 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="block px-4 py-3 text-sm text-brand-stone hover:bg-brand-beige hover:text-brand-gold transition-colors text-left font-medium"
-               >
-                 Google Calendar
-               </a>
-               <button 
-                 onClick={downloadIcs}
-                 className="block w-full px-4 py-3 text-sm text-brand-stone hover:bg-brand-beige hover:text-brand-gold transition-colors text-left font-medium border-t border-gray-100"
-               >
-                 Outlook / Apple (iCal)
-               </button>
+              <a
+                href={googleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-3 text-sm text-brand-stone hover:bg-brand-beige hover:text-brand-gold transition-colors text-left font-medium"
+              >
+                Google Calendar
+              </a>
+              <button
+                onClick={downloadIcs}
+                className="block w-full px-4 py-3 text-sm text-brand-stone hover:bg-brand-beige hover:text-brand-gold transition-colors text-left font-medium border-t border-gray-100"
+              >
+                Outlook / Apple (iCal)
+              </button>
             </div>
           </div>
         </div>
