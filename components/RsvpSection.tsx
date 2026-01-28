@@ -18,11 +18,11 @@ const FORM_CONFIG = {
     }
   },
   ALLERGENS: {
-    actionUrl: "https://docs.google.com/forms/d/e/YOUR_ALLERGEN_FORM_ID/formResponse",
+    actionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc_BRVuOQ8a9njESWonjRxK46_VDLtLO17cfB861efTwSC64g/formResponse",
     fields: {
-      name: "entry.9988776655",       // ID del campo Nombre
-      restrictions: "entry.4433221100", // ID del campo Checkboxes
-      notes: "entry.1122334455"       // ID del campo Notas
+      name: "entry.1099133302",       // ID del campo Nombre del invitado
+      restrictions: "entry.765343371", // ID del campo Alergenos (checkboxes)
+      notes: "entry.1577122403"       // ID del campo Notas Adicionales
     }
   }
 };
@@ -62,7 +62,7 @@ const RsvpSection: React.FC = () => {
   };
 
   return (
-    <section id="rsvp" className="py-24 px-4 bg-brand-beige relative overflow-hidden">
+    <section id="rsvp" className="py-16 md:py-24 px-4 bg-brand-beige relative overflow-hidden">
       {/* Background Pattern */}
       <div
         className="absolute inset-0 w-full h-full opacity-5 pointer-events-none"
@@ -70,19 +70,20 @@ const RsvpSection: React.FC = () => {
       ></div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <span className="material-symbols-outlined text-brand-gold text-5xl mb-6">mark_email_unread</span>
-        <h2 className="text-4xl md:text-5xl font-serif text-brand-stone mb-6">¿Nos acompañas?</h2>
-        <p className="text-brand-text text-lg mb-10 max-w-2xl mx-auto">
+        <span className="material-symbols-outlined text-brand-gold text-4xl md:text-5xl mb-4 md:mb-6">mark_email_unread</span>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-brand-stone mb-4 md:mb-6 px-4">¿Nos acompañas?</h2>
+        <p className="text-brand-text text-base md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto px-4">
           Por favor, confirma tu asistencia para nuestra boda en <strong>Café del Río</strong>.
-          <br />
-          Todos los datos se guardan automáticamente en nuestra lista de invitados.
+          <br className="hidden sm:block" />
+          <span className="hidden sm:inline"> </span>
+          <span className="block sm:inline mt-1 sm:mt-0">Todos los datos se guardan automáticamente en nuestra lista de invitados.</span>
         </p>
 
         {/* Tab Switcher */}
-        <div className="flex justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 mb-8 md:mb-12 px-4">
           <button
             onClick={() => { setActiveTab('rsvp'); setSubmissionStatus('idle'); }}
-            className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'rsvp'
+            className={`px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'rsvp'
               ? 'bg-brand-gold text-white shadow-lg shadow-brand-gold/30'
               : 'bg-white border border-brand-gold/20 text-brand-text hover:text-brand-gold hover:border-brand-gold'
               }`}
@@ -91,7 +92,7 @@ const RsvpSection: React.FC = () => {
           </button>
           <button
             onClick={() => { setActiveTab('allergens'); setSubmissionStatus('idle'); }}
-            className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'allergens'
+            className={`px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'allergens'
               ? 'bg-brand-gold text-white shadow-lg shadow-brand-gold/30'
               : 'bg-white border border-brand-gold/20 text-brand-text hover:text-brand-gold hover:border-brand-gold'
               }`}
@@ -101,7 +102,7 @@ const RsvpSection: React.FC = () => {
         </div>
 
         {/* Forms Container */}
-        <div className="glass-panel p-8 md:p-12 rounded-2xl border border-brand-gold/10 shadow-2xl max-w-2xl mx-auto text-left relative min-h-[400px]">
+        <div className="glass-panel p-6 md:p-8 lg:p-12 rounded-2xl border border-brand-gold/10 shadow-2xl max-w-2xl mx-auto text-left relative min-h-[400px]">
 
           {submissionStatus === 'success' ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center animate-fade-in z-20 bg-white/95 rounded-2xl">
@@ -210,15 +211,15 @@ const RsvpSection: React.FC = () => {
                     name={FORM_CONFIG.ALLERGENS.fields.name}
                     id="allergen-name"
                     required
-                    placeholder="Nombre de la persona con restricciones"
+                    placeholder="Nombre de la persona"
                     className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all placeholder-gray-400"
                   />
                 </div>
 
                 <div className="space-y-3">
-                  <label className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2">Selecciona restricciones</label>
+                  <label className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2">Selecciona</label>
                   <div className="grid grid-cols-2 gap-3">
-                    {['Vegetariano', 'Vegano', 'Sin Gluten', 'Sin Lactosa', 'Sin Frutos Secos', 'Sin Marisco'].map((item) => (
+                    {['Vegetariano', 'Vegano', 'Sin Gluten', 'Sin Lactosa', 'Sin Marisco', 'Sin Frutos Secos', 'Otros'].map((item) => (
                       <label key={item} className="flex items-center gap-3 p-3 rounded-md hover:bg-brand-beige transition-colors cursor-pointer bg-white border border-brand-gold/10">
                         <input type="checkbox" name={FORM_CONFIG.ALLERGENS.fields.restrictions} value={item} className="w-5 h-5 rounded border-gray-400 text-brand-gold focus:ring-brand-gold bg-transparent" />
                         <span className="text-brand-text text-sm font-medium">{item}</span>

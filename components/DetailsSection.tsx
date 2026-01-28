@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TimelineEvent } from '../types';
 
 const DetailsSection: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   // Timeline events without individual calendar data
   const events: TimelineEvent[] = [
     {
@@ -74,37 +92,37 @@ END:VCALENDAR`;
   };
 
   return (
-    <section id="details" className="py-24 px-4 md:px-8 bg-brand-cream relative">
+    <section ref={sectionRef} id="details" className="py-16 md:py-24 px-4 md:px-8 bg-brand-cream relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
-          
+        <div className="flex flex-col lg:flex-row gap-12 md:gap-16 items-start">
+
           {/* Left Text Content */}
-          <div className="flex-1 space-y-10 lg:sticky lg:top-24">
+          <div className="flex-1 space-y-8 md:space-y-10 lg:sticky lg:top-24">
             <div className="space-y-6">
               <div>
                 <h3 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2">El Programa</h3>
                 <h2 className="text-4xl md:text-6xl font-serif text-brand-stone leading-tight">
-                  Una Fiesta <br/>Sin Protocolos
+                  Una Fiesta <br />Sin Protocolos
                 </h2>
               </div>
-              
+
               <p className="text-brand-text text-lg leading-relaxed max-w-lg">
-                Queremos que sea una fiesta con 0 formalidades y protocolos, solo disfrutar y pasarlo bien. 
+                Queremos que sea una fiesta con 0 formalidades y protocolos, solo disfrutar y pasarlo bien.
                 Desde el atardecer hasta la madrugada, celebraremos juntos en Madrid Río.
               </p>
 
               {/* Date & Calendar Integration */}
               <div className="inline-flex items-center gap-4 bg-white border border-brand-gold/20 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="bg-brand-beige p-3 rounded-full text-brand-gold">
-                   <span className="material-symbols-outlined text-2xl">event</span>
+                  <span className="material-symbols-outlined text-2xl">event</span>
                 </div>
                 <div>
-                   <p className="font-serif text-brand-stone font-bold text-lg">Sábado, 20 Junio 2026</p>
-                   <div className="flex gap-3 text-xs font-bold uppercase tracking-wider text-brand-gold mt-1">
-                      <a href={getGoogleCalendarUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2">Google Calendar</a>
-                      <span className="text-brand-gold/30">|</span>
-                      <button onClick={downloadIcs} className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2">Outlook / iCal</button>
-                   </div>
+                  <p className="font-serif text-brand-stone font-bold text-lg">Sábado, 20 Junio 2026</p>
+                  <div className="flex gap-3 text-xs font-bold uppercase tracking-wider text-brand-gold mt-1">
+                    <a href={getGoogleCalendarUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2">Google Calendar</a>
+                    <span className="text-brand-gold/30">|</span>
+                    <button onClick={downloadIcs} className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2">Outlook / iCal</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -125,48 +143,51 @@ END:VCALENDAR`;
                 </div>
               ))}
             </div>
-            
+
             <div className="pt-4 border-t border-brand-gold/10">
-               <h4 className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">Cómo llegar</h4>
-               <ul className="space-y-2 text-brand-text text-sm">
-                 <li className="flex items-center gap-2">
-                   <span className="material-symbols-outlined text-brand-gold">directions_subway</span>
-                   Metro Príncipe Pío (Línea 10)
-                 </li>
-                 <li className="flex items-center gap-2">
-                   <span className="material-symbols-outlined text-brand-gold">local_parking</span>
-                   Parking de la EMT (Autovía del Suroeste, 66)
-                 </li>
-               </ul>
+              <h4 className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">Cómo llegar</h4>
+              <ul className="space-y-2 text-brand-text text-sm">
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-brand-gold">directions_subway</span>
+                  Metro Príncipe Pío (Línea 10)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-brand-gold">local_parking</span>
+                  Parking de la EMT (Autovía del Suroeste, 66)
+                </li>
+              </ul>
             </div>
           </div>
 
           {/* Right Visuals */}
-          <div className="flex-1 w-full flex flex-col gap-8">
-            {/* Main Image */}
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/10">
-              <img 
-                src="https://images.unsplash.com/photo-1545656188-4a5eb23b7625?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+          <div className="flex-1 w-full flex flex-col gap-6 md:gap-8">
+            {/* Main Image - Entrance Animation & Hover Zoom */}
+            <div className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/10 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+              <img
+                src="img/cafedelrio.jpg"
                 alt="Madrid Río Celebration"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-110"
               />
             </div>
 
             {/* Map Preview */}
-            <div className="w-full bg-white rounded-2xl p-4 border border-brand-gold/10 shadow-lg">
-              <div className="w-full h-80 rounded-xl bg-gray-100 relative overflow-hidden group cursor-pointer">
-                 {/* Decorative Map Image */}
-                <div 
+            <div className="w-full bg-white rounded-2xl p-3 md:p-4 border border-brand-gold/10 shadow-lg">
+              <div className="w-full h-64 md:h-80 rounded-xl bg-gray-100 relative overflow-hidden group cursor-pointer">
+                {/* Decorative Map Image */}
+                <div
                   className="absolute inset-0 bg-cover bg-center grayscale opacity-50 group-hover:opacity-70 transition-opacity duration-500"
-                  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1569616850239-0f46cb76e225?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80')" }}
+                  style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1569616850239-0f46cb76e225?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80')",
+                    transform: `translateY(${scrollY * 0.03}px)`,
+                  }}
                 ></div>
-                
+
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <a 
+                  <a
                     href={mapLink}
-                    target="_blank" 
+                    target="_blank"
                     rel="noreferrer"
-                    className="bg-white/90 backdrop-blur text-brand-stone px-6 py-3 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-white transition-colors border border-brand-gold/20 shadow-xl"
+                    className="bg-white/90 backdrop-blur text-brand-stone px-5 md:px-6 py-2.5 md:py-3 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 hover:bg-white transition-colors border border-brand-gold/20 shadow-xl active:scale-95"
                   >
                     <span className="material-symbols-outlined text-brand-gold">map</span>
                     Abrir Café del Río
