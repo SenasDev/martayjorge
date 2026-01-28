@@ -1,4 +1,4 @@
-import { useEffect, useState, RefObject } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export const useParallax = (speed: number = 0.5) => {
     const [offset, setOffset] = useState(0);
@@ -32,15 +32,22 @@ export const useScrollProgress = () => {
     return progress;
 };
 
-export const useInView = (ref: RefObject<HTMLElement>, threshold: number = 0.1) => {
+export const useInView = (options: { threshold?: number; rootMargin?: string } = {}) => {
+    const { threshold = 0.1, rootMargin = '0px' } = options;
+
+    const ref = useRef<HTMLElement>(null);
     const [isInView, setIsInView] = useState(false);
+    const [hasInView, setHasInView] = useState(false); // To trigger only once if needed
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsInView(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    setIsInView(true);
+                    setHasInView(true);
+                }
             },
-            { threshold }
+            { threshold, rootMargin }
         );
 
         if (ref.current) {
@@ -52,7 +59,7 @@ export const useInView = (ref: RefObject<HTMLElement>, threshold: number = 0.1) 
                 observer.unobserve(ref.current);
             }
         };
-    }, [ref, threshold]);
+    }, [threshold, rootMargin]);
 
-    return isInView;
+    return { ref, isInView, hasInView };
 };
