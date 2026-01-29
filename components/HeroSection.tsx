@@ -62,7 +62,7 @@ END:VCALENDAR`;
         <div
           className="absolute inset-0 bg-cover bg-[center_30%] bg-no-repeat transition-transform duration-100 ease-out will-change-transform"
           style={{
-            backgroundImage: "url('img/hero1.jpg')",
+            backgroundImage: "url('img/hero1.webp')",
             transform: `scale(${scale})`,
           }}
         />

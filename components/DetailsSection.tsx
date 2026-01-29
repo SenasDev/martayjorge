@@ -211,7 +211,8 @@ END:VCALENDAR`;
               <img
                 src="img/cafedelrio.jpg"
                 alt="Madrid Río Celebration"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 hover:scale-105 hover:filter-none"
+                style={{ filter: "saturate(0.7) sepia(0.2) brightness(0.95)" }}
               />
             </div>
 
@@ -225,7 +226,7 @@ END:VCALENDAR`;
                   className="transition-all duration-700 hover:filter-none"
                   style={{
                     border: 0,
-                    filter: "sepia(0.8) hue-rotate(-15deg) saturate(0.7",
+                    filter: "sepia(0.9) hue-rotate(-15deg) saturate(0.7)",
                   }}
                   allowFullScreen={true}
                   loading="lazy"
