@@ -41,7 +41,7 @@ const WhatsAppWidget: React.FC = () => {
               </span>
             </div>
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+              src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
               alt="WA"
               className="w-7 h-7"
             />
