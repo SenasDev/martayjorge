@@ -55,11 +55,10 @@ const MusicPlayer: React.FC = () => {
 
       <button
         onClick={togglePlay}
-        className={`relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full transition-all duration-700 shadow-xl border overflow-hidden ${
-          isPlaying
+        className={`relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full transition-all duration-700 shadow-xl border overflow-hidden ${isPlaying
             ? "bg-brand-gold border-brand-gold shadow-brand-gold/40 scale-105"
             : "bg-white/90 backdrop-blur-md border-brand-gold/20 hover:border-brand-gold/50 shadow-black/5 hover:scale-110"
-        }`}
+          }`}
         aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
       >
         {/* Animated Background Ripples when playing */}
@@ -82,11 +81,10 @@ const MusicPlayer: React.FC = () => {
 
         {/* Icon when paused */}
         <span
-          className={`material-symbols-outlined transition-all duration-700 ${
-            isPlaying
+          className={`material-symbols-outlined transition-all duration-700 ${isPlaying
               ? "opacity-0 scale-0 rotate-180 absolute"
               : "text-brand-gold scale-125 opacity-100 rotate-0"
-          } text-3xl font-light`}
+            } text-3xl font-light`}
         >
           play_circle
         </span>
@@ -94,17 +92,19 @@ const MusicPlayer: React.FC = () => {
 
       {/* floating hint - appears after 5s if not playing */}
       <div
-        className={`fixed bottom-20 md:bottom-24 left-6 transition-all duration-700 transform ${
-          showHint && !isPlaying
+        className={`fixed bottom-20 md:bottom-24 left-6 transition-all duration-700 transform ${showHint && !isPlaying
             ? "translate-y-0 opacity-100 scale-100"
             : "translate-y-4 opacity-0 scale-90 pointer-events-none"
-        }`}
+          }`}
       >
-        <div className="relative bg-brand-stone text-white px-4 py-2 rounded-xl shadow-2xl text-xs font-medium tracking-wide flex items-center gap-2 group/hint animate-bounce-slow">
-          <span className="material-symbols-outlined text-brand-gold text-lg">
+        <div className="relative bg-brand-stone text-white px-4 py-2.5 rounded-xl shadow-2xl text-[11px] md:text-xs font-medium tracking-wide flex items-center gap-2 group/hint animate-bounce-slow">
+          <span className="material-symbols-outlined text-brand-gold text-lg shrink-0">
             music_note
           </span>
-          <span>¿Quieres escuchar nuestra música?</span>
+          <div className="flex flex-col leading-tight">
+            <span>¿Quieres escuchar</span>
+            <span>nuestra música?</span>
+          </div>
           {/* Arrow pointing down */}
           <div className="absolute -bottom-1.5 left-6 w-3 h-3 bg-brand-stone rotate-45"></div>
         </div>
@@ -112,11 +112,10 @@ const MusicPlayer: React.FC = () => {
 
       {/* Floating Track Info (Desktop only) */}
       <div
-        className={`hidden md:flex flex-col transition-all duration-700 transform ${
-          isPlaying
+        className={`hidden md:flex flex-col transition-all duration-700 transform ${isPlaying
             ? "translate-x-0 opacity-100"
             : "-translate-x-6 opacity-0 pointer-events-none"
-        }`}
+          }`}
       >
         <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-2xl border border-brand-gold/10 shadow-sm">
           <p className="text-[10px] font-bold text-brand-goldDark uppercase tracking-[0.2em] leading-tight mb-0.5">
