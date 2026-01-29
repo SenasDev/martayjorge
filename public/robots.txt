@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://martayjorge.com/sitemap.xml
+Sitemap: https://martayjorge.vercel.app/sitemap.xml
