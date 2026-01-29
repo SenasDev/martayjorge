@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const HeroSection: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -7,8 +7,8 @@ const HeroSection: React.FC = () => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Calendar Event Details
@@ -18,7 +18,7 @@ const HeroSection: React.FC = () => {
     address: "Avenida de Portugal 1, Madrid",
     startIso: "20260620T200000",
     endIso: "20260621T020000",
-    details: "¡Nos casamos! Os esperamos para celebrar en Café del Río."
+    details: "¡Nos casamos! Os esperamos para celebrar en Café del Río.",
   };
 
   const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(mainEvent.title)}&dates=${mainEvent.startIso}/${mainEvent.endIso}&details=${encodeURIComponent(mainEvent.details + " " + mainEvent.address)}&location=${encodeURIComponent(mainEvent.location)}&ctz=Europe/Madrid`;
@@ -37,10 +37,12 @@ LOCATION:${mainEvent.location}, ${mainEvent.address}
 END:VEVENT
 END:VCALENDAR`;
 
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
+    const blob = new Blob([icsContent], {
+      type: "text/calendar;charset=utf-8",
+    });
+    const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'boda_marta_y_jorge.ics');
+    link.setAttribute("download", "boda_marta_y_jorge.ics");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -54,18 +56,21 @@ END:VCALENDAR`;
   const scale = Math.max(1 + scrollY / 10000, 1); // Very subtle scroll zoom
 
   return (
-    <header className="relative w-full h-[90vh] md:h-[85vh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
-      {/* Background with Scale Effect Only */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out will-change-transform"
-        style={{
-          backgroundImage: "url('https://image.ungrandjour.com/eyJidWNrZXQiOiJwcm9kdWN0aW9uLXVuZ3JhbmRqb3VyIiwia2V5Ijoic2xjczR6Y2Nqa3o0cXlxa3p5cHpzMm93dzZ4eCIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NDAwMH0sInRvRm9ybWF0IjoianBnIn19')",
-          transform: `scale(${scale})`, // Only scale, no translate
-        }}
-      >
-        <div className="absolute inset-0 bg-black/10"></div>
-        {/* Gradient at bottom for smooth transition and button readability */}
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black/40 to-transparent"></div>
+    <header className="relative w-full h-[85dvh] md:h-[90dvh] flex flex-col items-center justify-center overflow-hidden">
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0 bg-brand-stone">
+        <div
+          className="absolute inset-0 bg-cover bg-[center_30%] bg-no-repeat transition-transform duration-100 ease-out will-change-transform"
+          style={{
+            backgroundImage: "url('img/hero1.jpg')",
+            transform: `scale(${scale})`,
+          }}
+        />
+        <div className="absolute inset-0 bg-black/20"></div>
+        {/* Subtle shadow around edges for focus */}
+        <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.3)]"></div>
+        {/* Gradient at bottom for buttons readability */}
+        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
       </div>
 
       {/* Floating decorative elements */}
@@ -76,39 +81,50 @@ END:VCALENDAR`;
         ></div>
         <div
           className="absolute top-[60%] right-[15%] w-3 h-3 bg-brand-gold/20 rounded-full animate-pulse"
-          style={{ transform: `translateY(${scrollY * 0.15}px)`, animationDelay: '1s' }}
+          style={{
+            transform: `translateY(${scrollY * 0.15}px)`,
+            animationDelay: "1s",
+          }}
         ></div>
         <div
           className="absolute bottom-[30%] left-[20%] w-1.5 h-1.5 bg-white/40 rounded-full animate-pulse"
-          style={{ transform: `translateY(${scrollY * 0.25}px)`, animationDelay: '0.5s' }}
+          style={{
+            transform: `translateY(${scrollY * 0.25}px)`,
+            animationDelay: "0.5s",
+          }}
         ></div>
       </div>
 
       {/* Centered Title with Parallax */}
       <div
-        className="relative z-20 flex flex-col items-center text-center px-4 max-w-5xl mx-auto animate-fade-in"
+        className="relative z-20 flex flex-col items-center text-center px-4 max-w-5xl mx-auto animate-fade-in mt-12 sm:mt-0"
         style={{
           transform: `translateY(${parallaxTitle}px)`,
           opacity: opacity,
         }}
       >
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white leading-tight drop-shadow-2xl opacity-90">
-          Marta <span className="italic text-brand-gold font-light">&</span> Jorge
+          Marta <span className="italic text-brand-gold font-light">&</span>{" "}
+          Jorge
         </h1>
 
         {/* Decorative line - hidden on very small screens */}
         <div className="hidden sm:flex items-center gap-4 mt-6">
           <div className="w-12 md:w-16 h-px bg-white/40"></div>
-          <span className="text-white/70 text-xs md:text-sm uppercase tracking-[0.3em] font-light">20 Junio 2026</span>
+          <span className="text-white/70 text-xs md:text-sm uppercase tracking-[0.3em] font-light">
+            20 Junio 2026
+          </span>
           <div className="w-12 md:w-16 h-px bg-white/40"></div>
         </div>
 
         {/* Mobile date display */}
-        <p className="sm:hidden text-white/70 text-xs uppercase tracking-[0.3em] font-light mt-4">20 Junio 2026</p>
+        <p className="sm:hidden text-white/70 text-xs uppercase tracking-[0.3em] font-light mt-4">
+          20 Junio 2026
+        </p>
       </div>
 
       {/* Buttons Positioned at Bottom */}
-      <div className="absolute bottom-6 md:bottom-[20px] left-0 w-full z-30 px-4">
+      <div className="absolute bottom-4 left-0 w-full z-30 px-4">
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-center max-w-4xl mx-auto">
           <a
             href="#rsvp"
@@ -118,10 +134,10 @@ END:VCALENDAR`;
           </a>
 
           <div className="relative group w-full sm:w-auto">
-            <button
-              className="w-full sm:w-auto min-w-[200px] inline-flex items-center justify-center gap-2 rounded-lg border border-white/60 bg-white/20 backdrop-blur-md px-6 md:px-8 py-3 md:py-4 text-white font-bold text-sm md:text-base tracking-widest transition-all hover:bg-white/30 hover:border-white shadow-lg active:scale-95"
-            >
-              <span className="material-symbols-outlined text-lg md:text-xl">calendar_today</span>
+            <button className="w-full sm:w-auto min-w-[200px] inline-flex items-center justify-center gap-2 rounded-lg border border-white/60 bg-white/20 backdrop-blur-md px-6 md:px-8 py-3 md:py-4 text-white font-bold text-sm md:text-base tracking-widest transition-all hover:bg-white/30 hover:border-white shadow-lg active:scale-95">
+              <span className="material-symbols-outlined text-lg md:text-xl">
+                calendar_today
+              </span>
               <span>CALENDARIO</span>
             </button>
 

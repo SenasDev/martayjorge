@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { TimelineEvent } from '../types';
+import React, { useState, useEffect, useRef } from "react";
+import { TimelineEvent } from "../types";
 
 const DetailsSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,7 +10,7 @@ const DetailsSection: React.FC = () => {
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -27,32 +27,33 @@ const DetailsSection: React.FC = () => {
       time: "20:00 - 20:30",
       location: "Café del Río",
       address: "Avenida de Portugal 1, Madrid",
-      icon: "diversity_3"
+      icon: "diversity_3",
     },
     {
       title: "Copa de bienvenida",
       time: "20:30 - 21:30",
       location: "Café del Río",
       address: "Terraza con vistas",
-      icon: "celebration"
+      icon: "celebration",
     },
     {
       title: "Cena tipo cocktail",
       time: "21:30 - 23:00",
       location: "Café del Río",
       address: "Salón Principal",
-      icon: "restaurant"
+      icon: "restaurant",
     },
     {
       title: "Barra libre y baile",
       time: "23:00 - 02:00",
       location: "Pista de baile",
       address: "Hasta que nos duelan los pies",
-      icon: "nightlife"
-    }
+      icon: "nightlife",
+    },
   ];
 
-  const mapLink = "https://www.google.com/maps/search/?api=1&query=Café+del+Río,+Avenida+de+Portugal+1,+Madrid";
+  const mapLink =
+    "https://www.google.com/maps/search/?api=1&query=Café+del+Río,+Avenida+de+Portugal+1,+Madrid";
 
   // Main Event Data for Calendar
   const mainEvent = {
@@ -61,7 +62,7 @@ const DetailsSection: React.FC = () => {
     address: "Avenida de Portugal 1, Madrid",
     startIso: "20260620T200000",
     endIso: "20260621T020000",
-    details: "¡Nos casamos! Os esperamos para celebrar en Café del Río."
+    details: "¡Nos casamos! Os esperamos para celebrar en Café del Río.",
   };
 
   const getGoogleCalendarUrl = () => {
@@ -82,46 +83,71 @@ LOCATION:${mainEvent.location}, ${mainEvent.address}
 END:VEVENT
 END:VCALENDAR`;
 
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
+    const blob = new Blob([icsContent], {
+      type: "text/calendar;charset=utf-8",
+    });
+    const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'boda_marta_y_jorge.ics');
+    link.setAttribute("download", "boda_marta_y_jorge.ics");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   return (
-    <section ref={sectionRef} id="details" className="py-16 md:py-24 px-4 md:px-8 bg-brand-cream relative">
+    <section
+      ref={sectionRef}
+      id="details"
+      className="py-16 md:py-24 px-4 md:px-8 bg-brand-cream relative"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 md:gap-16 items-start">
-
           {/* Left Text Content */}
           <div className="flex-1 space-y-8 md:space-y-10 lg:sticky lg:top-24">
             <div className="space-y-6">
               <div>
-                <h3 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2">El Programa</h3>
+                <h3 className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2">
+                  El Programa
+                </h3>
                 <h2 className="text-4xl md:text-6xl font-serif text-brand-stone leading-tight">
-                  Una Fiesta <br />Sin Protocolos
+                  Una Fiesta <br />
+                  Sin Protocolos
                 </h2>
               </div>
 
               <p className="text-brand-text text-lg leading-relaxed max-w-lg">
-                Queremos que sea una fiesta con 0 formalidades y protocolos, solo disfrutar y pasarlo bien.
-                Desde el atardecer hasta la madrugada, celebraremos juntos en Madrid Río.
+                Queremos que sea una fiesta con 0 formalidades y protocolos,
+                solo disfrutar y pasarlo bien. Desde el atardecer hasta la
+                madrugada, celebraremos juntos en Madrid Río.
               </p>
 
               {/* Date & Calendar Integration */}
               <div className="inline-flex items-center gap-4 bg-white border border-brand-gold/20 p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="bg-brand-beige p-3 rounded-full text-brand-gold">
-                  <span className="material-symbols-outlined text-2xl">event</span>
+                  <span className="material-symbols-outlined text-2xl">
+                    event
+                  </span>
                 </div>
                 <div>
-                  <p className="font-serif text-brand-stone font-bold text-lg">Sábado, 20 Junio 2026</p>
+                  <p className="font-serif text-brand-stone font-bold text-lg">
+                    Sábado, 20 Junio 2026
+                  </p>
                   <div className="flex gap-3 text-xs font-bold uppercase tracking-wider text-brand-gold mt-1">
-                    <a href={getGoogleCalendarUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2">Google Calendar</a>
+                    <a
+                      href={getGoogleCalendarUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2"
+                    >
+                      Google Calendar
+                    </a>
                     <span className="text-brand-gold/30">|</span>
-                    <button onClick={downloadIcs} className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2">Outlook / iCal</button>
+                    <button
+                      onClick={downloadIcs}
+                      className="hover:text-brand-goldDark underline decoration-brand-gold/30 underline-offset-2"
+                    >
+                      Outlook / iCal
+                    </button>
                   </div>
                 </div>
               </div>
@@ -129,15 +155,26 @@ END:VCALENDAR`;
 
             <div className="grid gap-6">
               {events.map((evt, idx) => (
-                <div key={idx} className="bg-white border border-brand-gold/10 p-6 rounded-xl hover:shadow-xl hover:border-brand-gold/40 transition-all duration-300 group shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div
+                  key={idx}
+                  className="bg-white border border-brand-gold/10 p-6 rounded-xl hover:shadow-xl hover:border-brand-gold/40 transition-all duration-300 group shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                >
                   <div className="flex items-start gap-5">
                     <div className="p-3 rounded-full bg-brand-beige border border-brand-gold/20 group-hover:border-brand-gold transition-colors text-brand-gold shrink-0">
-                      <span className="material-symbols-outlined text-xl">{evt.icon}</span>
+                      <span className="material-symbols-outlined text-xl">
+                        {evt.icon}
+                      </span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-serif text-brand-stone mb-1">{evt.title}</h4>
-                      <p className="text-brand-gold font-medium mb-1 tracking-wide text-sm">{evt.time}</p>
-                      <p className="text-brand-text text-sm leading-relaxed">{evt.location} • {evt.address}</p>
+                      <h4 className="text-xl font-serif text-brand-stone mb-1">
+                        {evt.title}
+                      </h4>
+                      <p className="text-brand-gold font-medium mb-1 tracking-wide text-sm">
+                        {evt.time}
+                      </p>
+                      <p className="text-brand-text text-sm leading-relaxed">
+                        {evt.location} • {evt.address}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -145,14 +182,20 @@ END:VCALENDAR`;
             </div>
 
             <div className="pt-4 border-t border-brand-gold/10">
-              <h4 className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">Cómo llegar</h4>
+              <h4 className="text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">
+                Cómo llegar
+              </h4>
               <ul className="space-y-2 text-brand-text text-sm">
                 <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-brand-gold">directions_subway</span>
+                  <span className="material-symbols-outlined text-brand-gold">
+                    directions_subway
+                  </span>
                   Metro Príncipe Pío (Línea 10)
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-brand-gold">local_parking</span>
+                  <span className="material-symbols-outlined text-brand-gold">
+                    local_parking
+                  </span>
                   Parking de la EMT (Autovía del Suroeste, 66)
                 </li>
               </ul>
@@ -162,7 +205,9 @@ END:VCALENDAR`;
           {/* Right Visuals */}
           <div className="flex-1 w-full flex flex-col gap-6 md:gap-8">
             {/* Main Image - Entrance Animation & Hover Zoom */}
-            <div className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/10 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+            <div
+              className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/10 transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}`}
+            >
               <img
                 src="img/cafedelrio.jpg"
                 alt="Madrid Río Celebration"
@@ -171,31 +216,32 @@ END:VCALENDAR`;
             </div>
 
             {/* Map Preview */}
-            <div className="w-full bg-white rounded-2xl p-3 md:p-4 border border-brand-gold/10 shadow-lg">
-              <div className="w-full h-64 md:h-80 rounded-xl bg-gray-100 relative overflow-hidden group cursor-pointer">
-                {/* Decorative Map Image */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center grayscale opacity-50 group-hover:opacity-70 transition-opacity duration-500"
-                  style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1569616850239-0f46cb76e225?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80')",
-                    transform: `translateY(${scrollY * 0.03}px)`,
-                  }}
-                ></div>
-
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <a
-                    href={mapLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="bg-white/90 backdrop-blur text-brand-stone px-5 md:px-6 py-2.5 md:py-3 rounded-lg text-xs md:text-sm font-bold flex items-center gap-2 hover:bg-white transition-colors border border-brand-gold/20 shadow-xl active:scale-95"
-                  >
-                    <span className="material-symbols-outlined text-brand-gold">map</span>
-                    Abrir Café del Río
-                  </a>
-                </div>
+            <div className="w-full bg-white rounded-2xl p-3 md:p-4 border border-brand-gold/10 shadow-lg space-y-4">
+              <div className="w-full h-64 md:h-80 rounded-xl bg-gray-100 relative overflow-hidden border border-brand-gold/10">
+                <iframe
+                  src="https://maps.google.com/maps?q=Café%20del%20Río,%20Avenida%20de%20Portugal%201,%20Madrid&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Café del Río Location"
+                ></iframe>
               </div>
-            </div>
 
+              <a
+                href={mapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full bg-brand-cream text-brand-stone px-6 py-4 rounded-xl text-sm font-bold flex items-center justify-center gap-3 hover:bg-brand-beige transition-all border border-brand-gold/30 shadow-sm active:scale-[0.98] group"
+              >
+                <span className="material-symbols-outlined text-brand-gold group-hover:scale-110 transition-transform">
+                  directions
+                </span>
+                VER EN GOOGLE MAPS
+              </a>
+            </div>
           </div>
         </div>
       </div>
