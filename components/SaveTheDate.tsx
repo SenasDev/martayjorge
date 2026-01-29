@@ -74,20 +74,20 @@ const SaveTheDate: React.FC = () => {
             <span className="w-5 md:w-6 h-px bg-brand-gold/50"></span>
           </div>
 
-          <h1
+          <h2
             className="text-2xl sm:text-3xl md:text-4xl font-serif text-white leading-tight animate-slide-up"
             style={{ animationDelay: "0.1s" }}
           >
             Marta <span className="text-brand-gold italic font-light">&</span>{" "}
             Jorge
-          </h1>
+          </h2>
 
-          <h2
+          <h3
             className="text-sm sm:text-base md:text-xl font-serif text-brand-beige/90 mt-0.5 tracking-[0.2em] md:tracking-widest animate-slide-up"
             style={{ animationDelay: "0.2s" }}
           >
             20 • 06 • 2026
-          </h2>
+          </h3>
 
           {/* Countdown Timer */}
           <div

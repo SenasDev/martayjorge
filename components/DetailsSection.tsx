@@ -217,12 +217,16 @@ END:VCALENDAR`;
 
             {/* Map Preview */}
             <div className="w-full bg-white rounded-2xl p-3 md:p-4 border border-brand-gold/10 shadow-lg space-y-4">
-              <div className="w-full h-64 md:h-80 rounded-xl bg-gray-100 relative overflow-hidden border border-brand-gold/10">
+              <div className="w-full h-64 md:h-80 rounded-xl bg-gray-100 relative overflow-hidden border border-brand-gold/10 group/map">
                 <iframe
                   src="https://maps.google.com/maps?q=Café%20del%20Río,%20Avenida%20de%20Portugal%201,%20Madrid&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
-                  style={{ border: 0 }}
+                  className="transition-all duration-700 hover:filter-none"
+                  style={{
+                    border: 0,
+                    filter: "sepia(0.8) hue-rotate(-15deg) saturate(0.7",
+                  }}
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

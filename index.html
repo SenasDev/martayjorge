@@ -10,6 +10,9 @@
       name="description"
       content="¡Nos casamos! Acompáñanos a celebrar nuestro gran día el 20 de junio de 2026 en Madrid."
     />
+    <link rel="canonical" href="https://martayjorge.com" />
+    <link rel="icon" type="image/png" href="/img/metaog.png" />
+    <link rel="apple-touch-icon" href="/img/metaog.png" />
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
@@ -29,6 +32,36 @@
       content="¡Te invitamos a nuestra boda! Acompáñanos en este día tan especial."
     />
     <meta name="twitter:image" content="/img/metaog.png" />
+
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Boda Marta & Jorge",
+        "startDate": "2026-06-20T20:00:00+02:00",
+        "endDate": "2026-06-21T04:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Café del Río",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Avenida de Portugal 1",
+            "addressLocality": "Madrid",
+            "postalCode": "28011",
+            "addressCountry": "ES"
+          }
+        },
+        "image": ["https://martayjorge.com/img/metaog.png"],
+        "description": "Celebración del enlace matrimonial entre Marta y Jorge en Café del Río, Madrid.",
+        "organizer": {
+          "@type": "Person",
+          "name": "Marta & Jorge"
+        }
+      }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
