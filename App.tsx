@@ -12,7 +12,7 @@ import WhatsAppWidget from "./components/WhatsAppWidget";
 
 const App: React.FC = () => {
   return (
-    <div className="relative min-h-screen w-full flex flex-col font-sans selection:bg-brand-gold selection:text-brand-dark">
+    <div className="relative min-h-[100dvh] w-full flex flex-col font-sans selection:bg-brand-gold selection:text-brand-dark">
       <Navbar />
 
       <main className="flex-grow">
