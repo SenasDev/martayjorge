@@ -14,6 +14,8 @@ const FORM_CONFIG = {
       "https://docs.google.com/forms/d/e/1FAIpQLScPKMFOnwLPChgOx_x2Ug0-mpIpjm0a_77uag4o-NYMopoXSw/formResponse",
     fields: {
       name: "entry.1120823995", // ID del campo Nombre Completo
+      phone: "entry.1540491781", // ID del campo Numero de teléfono
+      relationship: "entry.1045150348", // ID del campo Parentesco
       guests: "entry.211899016", // ID del campo Nº Invitados
       attendance: "entry.100957132", // ID del campo Asistencia
     },
@@ -200,6 +202,40 @@ const RsvpSection: React.FC = () => {
                     id="name"
                     required
                     placeholder="Escribe tu nombre y apellidos"
+                    className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all placeholder-gray-400"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2"
+                  >
+                    Número de Teléfono
+                  </label>
+                  <input
+                    type="tel"
+                    name={FORM_CONFIG.RSVP.fields.phone}
+                    id="phone"
+                    required
+                    placeholder="Ej: 600 000 000"
+                    className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all placeholder-gray-400"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="relationship"
+                    className="block text-sm font-bold text-brand-gold uppercase tracking-wider mb-2"
+                  >
+                    Parentesco / Relación
+                  </label>
+                  <input
+                    type="text"
+                    name={FORM_CONFIG.RSVP.fields.relationship}
+                    id="relationship"
+                    required
+                    placeholder="Ej: Amigo del novio, Hermana de la novia..."
                     className="w-full bg-white border border-brand-gold/20 text-brand-stone px-4 py-4 rounded-lg focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-all placeholder-gray-400"
                   />
                 </div>
