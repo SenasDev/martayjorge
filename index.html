@@ -1,38 +1,47 @@
 <!doctype html>
 <html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marta & Jorge | Nuestra Boda</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marta & Jorge | Nuestra Boda</title>
+    <!-- SEO & Social Media Meta Tags -->
+    <meta
+      name="description"
+      content="¡Nos casamos! Acompáñanos a celebrar nuestro gran día el 20 de junio de 2026 en Madrid."
+    />
+    <link rel="canonical" href="https://martayjorge.es" />
+    <link rel="icon" type="image/png" href="/img/metaog.png" />
+    <link rel="apple-touch-icon" href="/img/metaog.png" />
 
-  <!-- SEO & Social Media Meta Tags -->
-  <meta name="description"
-    content="¡Nos casamos! Acompáñanos a celebrar nuestro gran día el 20 de junio de 2026 en Madrid." />
-  <link rel="canonical" href="https://martayjorge.es" />
-  <link rel="icon" type="image/png" href="/img/metaog.png" />
-  <link rel="apple-touch-icon" href="/img/metaog.png" />
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Marta & Jorge | Nuestra Boda" />
+    <meta
+      property="og:description"
+      content="¡Te invitamos a nuestra boda! Entra para ver todos los detalles y confirmar tu asistencia."
+    />
+    <meta property="og:image" content="https://martayjorge.es/img/metaog.png" />
+    <meta
+      property="og:image:secure_url"
+      content="https://martayjorge.es/img/metaog.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://martayjorge.es" />
 
-  <!-- Open Graph / Facebook / WhatsApp -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Marta & Jorge | Nuestra Boda" />
-  <meta property="og:description"
-    content="¡Te invitamos a nuestra boda! Entra para ver todos los detalles y confirmar tu asistencia." />
-  <meta property="og:image" content="https://martayjorge.es/img/metaog.png" />
-  <meta property="og:image:secure_url" content="https://martayjorge.es/img/metaog.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://martayjorge.es" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Marta & Jorge | Nuestra Boda" />
+    <meta
+      name="twitter:description"
+      content="¡Te invitamos a nuestra boda! Acompáñanos en este día tan especial."
+    />
+    <meta name="twitter:image" content="/img/metaog.png" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Marta & Jorge | Nuestra Boda" />
-  <meta name="twitter:description" content="¡Te invitamos a nuestra boda! Acompáñanos en este día tan especial." />
-  <meta name="twitter:image" content="/img/metaog.png" />
-
-  <!-- Schema Markup (JSON-LD) -->
-  <script type="application/ld+json">
+    <!-- Schema Markup (JSON-LD) -->
+    <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Event",
@@ -61,116 +70,118 @@
       }
     </script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-    rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Icons -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "sans-serif"],
-            serif: ["Playfair Display", "serif"],
-          },
-          colors: {
-            brand: {
-              cream: "#FDFBF7", // Ivory / Very soft cream
-              beige: "#F4F1EA", // Linen
-              gold: "#D6C096", // Champagne / Pastel Gold
-              goldDark: "#B39B72", // Darker Champagne
-              text: "#8A8175", // Soft Warm Grey
-              stone: "#595045", // Warm Dark Grey/Brown
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
             },
-          },
-          animation: {
-            "fade-in": "fadeIn 1s ease-out",
-            "slide-up": "slideUp 0.8s ease-out",
-            "scale-in": "scaleIn 0.6s ease-out",
-            float: "float 3s ease-in-out infinite",
-            "pulse-slow": "pulseSlow 2.5s ease-in-out infinite",
-          },
-          keyframes: {
-            fadeIn: {
-              "0%": { opacity: "0" },
-              "100%": { opacity: "1" },
+            colors: {
+              brand: {
+                cream: "#FDFBF7", // Ivory / Very soft cream
+                beige: "#F4F1EA", // Linen
+                gold: "#D6C096", // Champagne / Pastel Gold
+                goldDark: "#B39B72", // Darker Champagne
+                text: "#8A8175", // Soft Warm Grey
+                stone: "#595045", // Warm Dark Grey/Brown
+              },
             },
-            slideUp: {
-              "0%": { transform: "translateY(30px)", opacity: "0" },
-              "100%": { transform: "translateY(0)", opacity: "1" },
+            animation: {
+              "fade-in": "fadeIn 1s ease-out",
+              "slide-up": "slideUp 0.8s ease-out",
+              "scale-in": "scaleIn 0.6s ease-out",
+              float: "float 3s ease-in-out infinite",
+              "pulse-slow": "pulseSlow 2.5s ease-in-out infinite",
             },
-            scaleIn: {
-              "0%": { transform: "scale(0.9)", opacity: "0" },
-              "100%": { transform: "scale(1)", opacity: "1" },
-            },
-            float: {
-              "0%, 100%": { transform: "translateY(0px)" },
-              "50%": { transform: "translateY(-10px)" },
-            },
-            pulseSlow: {
-              "0%, 100%": { transform: "scale(1)", opacity: "1" },
-              "50%": { transform: "scale(1.05)", opacity: "0.9" },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(30px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              scaleIn: {
+                "0%": { transform: "scale(0.9)", opacity: "0" },
+                "100%": { transform: "scale(1)", opacity: "1" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              pulseSlow: {
+                "0%, 100%": { transform: "scale(1)", opacity: "1" },
+                "50%": { transform: "scale(1.05)", opacity: "0.9" },
+              },
             },
           },
         },
-      },
-    };
-  </script>
-  <style>
-    html,
-    body {
-      height: 100dvh;
-      margin: 0;
-      padding: 0;
-    }
+      };
+    </script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
 
-    ::-webkit-scrollbar-track {
-      background: #fdfbf7;
-    }
+      ::-webkit-scrollbar-track {
+        background: #fdfbf7;
+      }
 
-    ::-webkit-scrollbar-thumb {
-      background: #d6c096;
-      border-radius: 4px;
-    }
+      ::-webkit-scrollbar-thumb {
+        background: #d6c096;
+        border-radius: 4px;
+      }
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: #b39b72;
-    }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #b39b72;
+      }
 
-    /* Glassmorphism utilities */
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
+      /* Glassmorphism utilities */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
 
-    .fill-1 {
-      font-variation-settings:
-        "FILL" 1,
-        "wght" 400,
-        "GRAD" 0,
-        "opsz" 24;
-    }
-  </style>
-</head>
+      .fill-1 {
+        font-variation-settings:
+          "FILL" 1,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
 
-<body class="bg-brand-cream text-brand-stone antialiased">
-  <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
-
+  <body class="bg-brand-cream text-brand-stone antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

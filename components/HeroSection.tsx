@@ -56,7 +56,7 @@ END:VCALENDAR`;
   const scale = Math.max(1 + scrollY / 10000, 1); // Very subtle scroll zoom
 
   return (
-    <header className="relative w-full h-[85dvh] md:h-[90dvh] flex flex-col items-center justify-center overflow-hidden">
+    <header className="relative w-full h-[85svh] md:h-[90vh] flex flex-col items-center justify-center overflow-hidden">
       {/* Background Layer */}
       <div className="absolute inset-0 z-0 bg-brand-stone">
         <div
